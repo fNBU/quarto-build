@@ -20,11 +20,14 @@ jobs:
       attestations: write
       id-token: write
     steps:
-    - uses: actions/checkout@v4
-    - uses: whoan/docker-build-with-cache-action@master
-      with:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: ${{ env.REGISTRY }}
-        image_name: hello-world-push-on-push
-        push_image_and_stages: on:push
+      - if: ${{ matrix.platform == 'ubuntu-latest' }}
+        name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+      - uses: actions/checkout@v4
+      - uses: whoan/docker-build-with-cache-action@master
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: ${{ env.REGISTRY }}
+          image_name: hello-world-push-on-push
+          push_image_and_stages: on:push
