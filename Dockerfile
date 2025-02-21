@@ -15,5 +15,6 @@ run apt-get -y update && apt-get -y install librsvg2-bin
 
 # needed for use with quarto github actions
 run apt-get -y update && apt-get -y install gh
+run apt-get -y update && apt-get -y install jq
 
 entrypoint [ "/bin/bash" ]
