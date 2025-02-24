@@ -20,9 +20,7 @@ jobs:
       attestations: write
       id-token: write
     steps:
-      - if: ${{ matrix.platform == 'ubuntu-latest' }}
-        name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
+      - uses: jlumbroso/free-disk-space@main #free disk space
       - uses: actions/checkout@v4
       - uses: whoan/docker-build-with-cache-action@master
         with:
