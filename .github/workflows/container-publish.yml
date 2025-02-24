@@ -29,5 +29,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ${{ env.REGISTRY }}
-          image_name: hello-world-push-on-push
+          image_name: ${{ env.IMAGE_NAME }}
           push_image_and_stages: on:push
